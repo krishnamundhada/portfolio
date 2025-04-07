@@ -1,136 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <link rel="stylesheet" href="documentation.html">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Mundhada - Portfolio</title>
     <style>
-        /* Color Variables */
+        /* Base Styles */
         :root {
-            --primary: #A5A529;
-            --secondary: #7d80da;
-            --tertiary: #b0a3d4;
-            --quaternary: #cebacf;
-            --quinary: #C6AFB1;
-            --light: #f5f5f5;
-            --dark: #121212;
+            --color-primary: #A5A529;
+            --color-secondary: #7d80da;
+            --color-tertiary: #b0a3d4;
+            --color-quaternary: #cebacf;
+            --color-quinary: #C6AFB1;
+            --text-dark: #333;
             --text-light: #f5f5f5;
-            --text-dark: #333333;
+            --bg-light: #f9f9f9;
+            --bg-dark: #252525;
             --transition: all 0.3s ease;
         }
 
-        /* Dark Mode Variables */
-        .dark-mode {
-            --primary: #b3b33a;
-            --light: #121212;
-            --dark: #f5f5f5;
-            --text-light: #333333;
-            --text-dark: #f5f5f5;
-        }
-
-        /* Reset & Base Styles */
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            transition: var(--transition);
             scroll-behavior: smooth;
         }
 
-        body {
-            background-color: var(--light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            transition: var(--transition);
+        body.dark-mode {
+            color: var(--text-light);
+            background-color: var(--bg-dark);
         }
 
-        h1, h2, h3, h4 {
+        * {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--secondary);
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
         section {
-            padding: 5rem 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Header & Navigation */
@@ -139,42 +65,56 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            background-color: var(--light);
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
             transition: var(--transition);
         }
 
-        .nav-container {
+        body.dark-mode header {
+            background-color: rgba(37, 37, 37, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 15px 0;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--secondary);
+            color: var(--color-primary);
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 30px;
         }
 
         .nav-links a {
-            position: relative;
+            text-decoration: none;
             color: var(--text-dark);
-            font-weight: 600;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .nav-links a {
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-secondary);
         }
 
         .nav-links a::after {
@@ -184,7 +124,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--color-secondary);
             transition: var(--transition);
         }
 
@@ -192,357 +132,396 @@
             width: 100%;
         }
 
-        .hamburger, .mobile-menu {
-            display: none;
+        .toggle-container {
+            display: flex;
+            align-items: center;
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: 1.5rem;
-            outline: none;
-            width: 50px;
-            height: 25px;
-            border-radius: 25px;
-            background-color: var(--quaternary);
+        .theme-toggle {
             position: relative;
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: var(--color-quaternary);
+            cursor: pointer;
+            margin-left: 20px;
         }
 
-        .dark-mode-toggle::before {
+        .theme-toggle::after {
             content: '';
             position: absolute;
-            width: 21px;
-            height: 21px;
-            background-color: var(--light);
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            top: 2px;
-            left: 2px;
+            background-color: white;
             transition: var(--transition);
         }
 
-        body.dark-mode .dark-mode-toggle::before {
-            transform: translateX(25px);
+        body.dark-mode .theme-toggle::after {
+            transform: translateX(30px);
         }
 
-        /* Hero Section */
-        .hero {
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .menu-toggle span {
+            background-color: var(--text-light);
+        }
+
+        /* Home Section */
+        #home {
+            position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(to right, rgba(206, 186, 207, 0.8), rgba(176, 163, 212, 0.8));
-            background-attachment: fixed;
+            background: linear-gradient(135deg, var(--color-quaternary) 0%, var(--color-tertiary) 100%);
+            overflow: hidden;
         }
 
-        .hero-content {
+        .home-content {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: flex-start;
-            max-width: 800px;
         }
 
-        .hero-title {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+        .home-text {
+            max-width: 600px;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
+        .home-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
         }
 
-        .hero-img {
-            border-radius: 50%;
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border: 5px solid var(--light);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            margin-bottom: 2rem;
+        .home-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        /* About Section */
-        .about {
-            background-color: var(--light);
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #8f8f23;
+        }
+
+        /* About Me Section */
+        #about {
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode #about {
+            background-color: var(--bg-dark);
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        .about-img img {
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .about-image img {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
         }
 
         .about-text h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            margin-bottom: 20px;
+            color: var(--color-primary);
         }
 
-        .skill-item {
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
+        .skills-container {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .skill-bar {
-            height: 8px;
-            background-color: var(--quaternary);
-            border-radius: 4px;
-            overflow: hidden;
+        .skill-tag {
+            padding: 8px 16px;
+            background-color: var(--color-tertiary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
 
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
-            animation: progressAnimation 1s ease-in-out;
-        }
-
-        @keyframes progressAnimation {
-            from { width: 0; }
+        .resume-btn {
+            margin-top: 30px;
         }
 
         /* Projects Section */
-        .projects {
-            background-color: var(--light);
+        #projects {
+            background-color: var(--color-quaternary);
+            color: var(--text-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
         }
 
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
 
         .project-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
+        }
+
+        body.dark-mode .project-card {
+            background-color: #333;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .project-img {
-            width: 100%;
             height: 200px;
-            object-fit: cover;
+            background-color: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 20px;
         }
 
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
         }
 
         /* Modules Section */
-        .modules {
-            background: linear-gradient(to right, rgba(198, 175, 177, 0.2), rgba(176, 163, 212, 0.2));
+        #modules {
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode #modules {
+            background-color: var(--bg-dark);
         }
 
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .module-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
-            position: relative;
-            z-index: 1;
-            height: 300px;
+            cursor: pointer;
         }
 
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, var(--secondary), var(--tertiary));
-            opacity: 0;
-            z-index: -1;
-            transition: var(--transition);
+        body.dark-mode .module-card {
+            background-color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .module-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .module-card:hover::before {
-            opacity: 1;
-        }
-
-        .module-card:hover .module-content {
-            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .module-icon {
-            margin: 2rem auto;
-            width: 80px;
-            height: 80px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--quaternary);
-            border-radius: 50%;
-            color: var(--primary);
-            font-size: 2.5rem;
-            transition: var(--transition);
+            color: white;
+            font-size: 3rem;
         }
 
-        .module-card:hover .module-icon {
-            background-color: white;
-        }
+        .web-dev { background-color: var(--color-primary); }
+        .cad { background-color: var(--color-secondary); }
+        .cac { background-color: var(--color-tertiary); }
+        .printing { background-color: var(--color-quaternary); }
+        .pcb { background-color: var(--color-quinary); }
+        .iot { background-color: var(--color-primary); }
+        .java { background-color: var(--color-secondary); }
+        .networking { background-color: var(--color-tertiary); }
+        .ai-ml { background-color: var(--color-quaternary); }
 
         .module-content {
-            padding: 1.5rem;
-            text-align: center;
+            padding: 20px;
+        }
+
+        .module-content h3 {
+            margin-bottom: 10px;
+            color: var(--color-primary);
             transition: var(--transition);
         }
 
-        .module-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+        body.dark-mode .module-content h3 {
+            color: var(--color-secondary);
         }
 
         .module-details {
             height: 0;
             overflow: hidden;
+            opacity: 0;
             transition: var(--transition);
         }
 
         .module-card.active .module-details {
             height: auto;
-            margin-top: 1rem;
+            opacity: 1;
+            margin-top: 15px;
         }
 
         /* Contact Section */
-        .contact {
-            background-color: var(--light);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .contact-info p {
-            margin-bottom: 2rem;
-        }
-
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .contact-icon {
-            margin-right: 1rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--quaternary);
-            border-radius: 50%;
-            color: var(--primary);
+        #contact {
+            background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-secondary) 100%);
+            color: white;
         }
 
         .contact-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .form-label {
+        .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            margin-bottom: 5px;
+            font-weight: 500;
         }
 
-        .form-input, .form-textarea {
+        .form-control {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
             transition: var(--transition);
         }
 
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--secondary);
+        .form-control:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(125, 128, 218, 0.2);
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
-        .form-textarea {
-            resize: vertical;
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        textarea.form-control {
             min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--color-primary);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: #8f8f23;
+            transform: translateY(-3px);
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--bg-dark);
             color: var(--text-light);
-            padding: 3rem 0;
+            padding: 30px 0;
             text-align: center;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            margin-top: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .social-link {
@@ -554,110 +533,114 @@
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            margin: 0 0.5rem;
+            margin: 0 10px;
+            text-decoration: none;
             transition: var(--transition);
         }
 
         .social-link:hover {
-            background-color: var(--primary);
+            background-color: var(--color-secondary);
             transform: translateY(-3px);
         }
 
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .about-content, .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
+        /* Media Queries */
         @media (max-width: 768px) {
-            .nav-links, .dark-mode-toggle {
-                display: none;
+            section {
+                padding: 60px 0;
             }
-            
-            .hamburger {
-                display: block;
-                cursor: pointer;
-                font-size: 1.5rem;
-                color: var(--text-dark);
+
+            .home-text h1 {
+                font-size: 2.5rem;
             }
-            
-            .mobile-menu {
-                display: block;
-                position: fixed;
-                top: 80px;
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
                 left: 0;
-                width: 100%;
-                background-color: var(--light);
-                padding: 1rem 0;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            .mobile-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            
-            .mobile-menu ul {
-                list-style: none;
-            }
-            
-            .mobile-menu li {
-                padding: 1rem 2rem;
-                text-align: center;
-            }
-            
-            .hero-content {
+                right: 0;
+                background-color: white;
+                flex-direction: column;
                 align-items: center;
-                text-align: center;
+                height: 0;
+                overflow: hidden;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            body.dark-mode .nav-links {
+                background-color: var(--bg-dark);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                height: 300px;
+                padding: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
             }
         }
 
         @media (max-width: 480px) {
-            .hero-title {
+            .home-text h1 {
                 font-size: 2rem;
             }
-            
-            .section-title {
-                font-size: 1.8rem;
+
+            .section-header h2 {
+                font-size: 2rem;
             }
-            
-            .btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
+
+            .contact-form {
+                padding: 20px;
             }
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
     <!-- Header & Navigation -->
     <header>
-        <div class="nav-container">
-            <a href="#" class="logo">Krishna<span>Mundhada</span></a>
+        <div class="container">
             <nav>
+                <a href="#home" class="logo">Krishna Mundhada</a>
+                <div class="toggle-container">
+                    <div class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="theme-toggle"></div>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -665,139 +648,83 @@
                     <li><a href="#modules">Modules</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode"></button>
             </nav>
-            <div class="hamburger">☰</div>
-        </div>
-        <div class="mobile-menu">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#modules">Modules</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><button class="dark-mode-toggle" aria-label="Toggle dark mode"></button></li>
-            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Home Section -->
+    <section id="home">
         <div class="container">
-            <div class="hero-content">
-                <img src="./my photo.jpg" alt="Krishna Mundhada" class="hero-img">
-                <h1 class="hero-title">Krishna Mundhada</h1>
-                <h2 class="hero-subtitle">Electronics & Telecommunication Engineering Student</h2>
-                <p>A motivated first-year student at SSGMCE, passionate about hardware and software technology with excellent communication and teamwork skills.</p>
-                <div>
-                    <a href="#about" class="btn">Learn More</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            <div class="home-content">
+                <div class="home-text fade-in">
+                    <h1>Krishna Mundhada</h1>
+                    <p>A motivated first-year Electronics & Telecommunication student at SSGMCE, passionate about hardware and software technologies.</p>
+                    <a href="#about" class="btn">Learn More About Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- About Me Section -->
+    <section id="about">
         <div class="container">
-            <h2 class="section-title text-center">About Me</h2>
             <div class="about-content">
-                <div class="about-img">
-                    <img src="./my photo.jpg" alt="About Krishna Mundhada">
+                <div class="about-image fade-in delay-1">
+                    <img src="./my photo.jpg" alt="Krishna Mundhada">
                 </div>
-                <div class="about-text">
-                    <h2>My Background</h2>
-                    <p>I am a first-year Electronics & Telecommunication Engineering student at SSGMCE, with a passion for both hardware and software technology. I have worked as an INNOVO'25 Coordinator and have experience in script writing, anchoring, and sponsorship acquisition.</p>
-                    <p>I thrive in collaborative environments and am currently focusing on developing my coding and problem-solving skills. I'm deeply interested in technology and design, and always eager to learn and grow in these areas.</p>
-                    
-                    <h3>Education</h3>
-                    <p>
-                        <strong>SSGMCE</strong> - Electronics & Telecommunication Engineering<br>
-                        <strong>S.F.L. High School and Jr. College</strong> - HSC (71.90%)<br>
-                        <strong>S.F.L. High School and Jr. College</strong> - SSC (79.82%)<br>
-                        <strong>Common Entrance Test (CET)</strong> - 81.92 percentile
-                    </p>
-                    
-                    <h3>My Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Communication</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
+                <div class="about-text fade-in delay-2">
+                    <h2>About Me</h2>
+                    <p>I'm a first-year Electronics & Telecommunication student at SSGMCE, with a passion for both hardware and software technologies. I excel in communication and teamwork, which helps me collaborate effectively with others.</p>
+                    <p>Currently, I'm focusing on improving my coding and problem-solving skills while nurturing my deep interest in technology and design. I have experience in script writing, both formal and informal, and have served as an anchor at cultural events.</p>
+                    <h3>Academic Background</h3>
+                    <p>I achieved 79.82% in SSC and 71.90% in HSC from S.F.L. High School and Jr. College. I also scored 81.92 percentile in the Common Entrance Test (CET).</p>
+                    <h3>Experience</h3>
+                    <p>I worked as an INNOVO'25 Coordinator and was involved in sponsorship activities, including approaching Hindustan Unilever Limited (HUL). I've been recognized for my anchoring skills, winning an award as the "most amazing anchor" at a cultural event.</p>
+                    <h3>Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Scripting</span>
+                        <span class="skill-tag">Anchoring</span>
+                        <span class="skill-tag">Presentation</span>
+                        <span class="skill-tag">Problem Solving</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Teamwork</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Script Writing</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Presentation</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Coding (in progress)</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 60%"></div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="btn" download>Download Resume</a>
+                    <a href="./resume.pdf" class="btn resume-btn">Download Resume</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects">
         <div class="container">
-            <h2 class="section-title text-center">My Projects</h2>
+            <div class="section-header fade-in">
+                <h2>My Projects</h2>
+                <p>Here are some of the projects I've worked on</p>
+            </div>
             <div class="projects-grid">
-                <div class="project-card">
-                    <img src="./team work.jpeg" alt="INNOVO'25" class="project-img">
+                <div class="project-card fade-in delay-1">
+                    <div class="project-img">P</div>
                     <div class="project-content">
-                        <h3 class="project-title">INNOVO'25 Coordination</h3>
-                        <p>Served as a coordinator for INNOVO'25 event, handling script writing, communication, and presentation aspects.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <h3>INNOVO'25 Coordination</h3>
+                        <p>Coordinated various aspects of the INNOVO'25 event, including script writing and presentations.</p>
+                        <button class="btn">Learn More</button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="./presentation.jpeg" alt="Sponsorship" class="project-img">
+                <div class="project-card fade-in delay-2">
+                    <div class="project-img">S</div>
                     <div class="project-content">
-                        <h3 class="project-title">HUL Sponsorship</h3>
-                        <p>Successfully approached Hindustan Unilever Limited (HUL) for event sponsorship in February 2025.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <h3>Sponsorship Campaign</h3>
+                        <p>Led a sponsorship initiative for college events, including approaching Hindustan Unilever Limited (HUL).</p>
+                        <button class="btn">Learn More</button>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="./anchor.jpeg" alt="Anchoring" class="project-img">
+                <div class="project-card fade-in delay-3">
+                    <div class="project-img">A</div>
                     <div class="project-content">
-                        <h3 class="project-title">Event Anchoring</h3>
-                        <p>Award-winning anchor at cultural events, recognized for exceptional presentation skills.</p>
-                        <a href="#" class="btn btn-outline">Learn More</a>
+                        <h3>Anchoring</h3>
+                        <p>Served as an anchor for various cultural events, winning recognition for performance excellence.</p>
+                        <button class="btn">Learn More</button>
                     </div>
                 </div>
             </div>
@@ -805,161 +732,186 @@
     </section>
 
     <!-- Modules Section -->
-    <section id="modules" class="modules">
+    <section id="modules">
         <div class="container">
-            <h2 class="section-title text-center">Learning Modules</h2>
+            <div class="section-header fade-in">
+                <h2>Learning Modules</h2>
+                <p>Explore the different technology areas I'm working with</p>
+            </div>
             <div class="modules-grid">
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 10h-4v4h4v-4z"></path>
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14l2-2 2 2"></path>
-                        </svg>
-                    </div>
+                <div class="module-card fade-in delay-1">
+                    <div class="module-icon web-dev">WD</div>
                     <div class="module-content">
-                        <h3 class="module-title">Web Development</h3>
-                        <p>HTML, CSS, JavaScript and responsive design fundamentals.</p>
+                        <h3>Web Development</h3>
                         <div class="module-details">
-                            <p>Learning front-end technologies, responsive design principles, and basic interactions to create modern web applications.</p>
-                            <a href=""></a>
+                            <p>Exploring the fundamentals of web development, including HTML, CSS, and JavaScript to create responsive and interactive websites.</p>
+                        </div>
+                        <a href="./documentation.html">learn More </a>
+                    </div>
+                </div>
+                <div class="module-card fade-in delay-1">
+                    <div class="module-icon cad">CAD</div>
+                    <div class="module-content">
+                        <h3>Computer-Aided Design</h3>
+                        <div class="module-details">
+                            <p>Learning to use CAD tools to create detailed technical drawings and 3D models for various engineering applications.</p>
                         </div>
                     </div>
                 </div>
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                    </div>
+                <div class="module-card fade-in delay-1">
+                    <div class="module-icon cac">CAC</div>
                     <div class="module-content">
-                        <h3 class="module-title">CAD</h3>
-                        <p>Computer-Aided Design for technical drawings and 3D modeling.</p>
+                        <h3>Computer-Aided Construction</h3>
                         <div class="module-details">
-                            <p>Developing skills in creating precise technical drawings and 3D models using industry-standard CAD software.</p>
+                            <p>Studying how to apply computational tools to improve construction planning, design, and execution processes.</p>
                         </div>
                     </div>
                 </div>
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <path d="M9 17V7l7 5-7 5z"></path>
-                        </svg>
-                    </div>
+                <div class="module-card fade-in delay-2">
+                    <div class="module-icon printing">3D</div>
                     <div class="module-content">
-                        <h3 class="module-title">CAC</h3>
-                        <p>Computer-Aided Circuit design and simulation.</p>
+                        <h3>3D Printing</h3>
                         <div class="module-details">
-                            <p>Learning to design and simulate electronic circuits using specialized software tools for accurate analysis.</p>
+                            <p>Discovering the world of additive manufacturing and how to design, prepare, and print 3D models for prototyping and production.</p>
                         </div>
                     </div>
                 </div>
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 9h12v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9z"></path>
-                            <path d="M6 9V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"></path>
-                            <path d="M9 21v1M15 21v1"></path>
-                        </svg>
-                    </div>
+                <div class="module-card fade-in delay-2">
+                    <div class="module-icon pcb">PCB</div>
                     <div class="module-content">
-                        <h3 class="module-title">3D Printing</h3>
-                        <p>Additive manufacturing techniques and applications.</p>
+                        <h3>PCB Design</h3>
                         <div class="module-details">
-                            <p>Exploring the process of creating three-dimensional objects from digital files using additive manufacturing techniques.</p>
+                            <p>Learning to design printed circuit boards for electronic devices, from schematic capture to production-ready layouts.</p>
                         </div>
                     </div>
                 </div>
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                            <line x1="7" y1="2" x2="7" y2="22"></line>
-                            <line x1="17" y1="2" x2="17" y2="22"></line>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <line x1="2" y1="7" x2="7" y2="7"></line>
-                            <line x1="2" y1="17" x2="7" y2="17"></line>
-                            <line x1="17" y1="17" x2="22" y2="17"></line>
-                            <line x1="17" y1="7" x2="22" y2="7"></line>
-                        </svg>
-                    </div>
+                <div class="module-card fade-in delay-2">
+                    <div class="module-icon iot">IoT</div>
                     <div class="module-content">
-                        <h3 class="module-title">PCB Design</h3>
+                        <h3>Internet of Things</h3>
+                        <div class="module-details">
+                            <p>Exploring connected systems that bridge the physical and digital worlds through sensors, microcontrollers, and cloud platforms.</p>
                         </div>
-
-
- <!-- Contact Section -->
-<section id="contact" class="contact">
-    <div class="container">
-        <h2 class="section-title text-center">Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Let's Connect</h2>
-                <p>Feel free to reach out to me for any opportunities, collaborations, or just to say hello!</p>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </div>
-                        <span>Phone Number Available on Request</span>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
+                </div>
+                <div class="module-card fade-in delay-3">
+                    <div class="module-icon java">J</div>
+                    <div class="module-content">
+                        <h3>Java</h3>
+                        <div class="module-details">
+                            <p>Developing programming skills in Java to create cross-platform applications with object-oriented design principles.</p>
                         </div>
-                        <span>mundhadakrishna9@gmail.com</span>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                </div>
+                <div class="module-card fade-in delay-3">
+                    <div class="module-icon networking">NET</div>
+                    <div class="module-content">
+                        <h3>Networking</h3>
+                        <div class="module-details">
+                            <p>Studying computer networks, protocols, and infrastructure to understand how data communication systems function.</p>
                         </div>
-                        <span>Gandhi Chowk, Dhamangaon Rly, Amravati, Maharashtra</span>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
+                </div>
+                <div class="module-card fade-in delay-3">
+                    <div class="module-icon ai-ml">AI</div>
+                    <div class="module-content">
+                        <h3>AI/ML</h3>
+                        <div class="module-details">
+                            <p>Learning about artificial intelligence and machine learning algorithms, models, and applications across various domains.</p>
                         </div>
-                        <a href="https://www.linkedin.com/in/krishna-mundhada-8ab638350" target="_blank">LinkedIn Profile</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="contact-form">
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get In Touch</h2>
+                <p>Have a question or want to work together?</p>
+            </div>
+            <div class="contact-form fade-in delay-1">
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" id="name" class="form-input" required>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" id="email" class="form-input" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" id="subject" class="form-input">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Your Message</label>
-                        <textarea id="message" class="form-textarea" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/krishna-mundhada-8ab638350" class="social-link" target="_blank">In</a>
+            </div>
+            <p>&copy; 2025 Krishna Mundhada. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const header = document.querySelector('header');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const moduleCards = document.querySelectorAll('.module-card');
+        const contactForm = document.getElementById('contactForm');
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Dark Mode Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Module Card Toggle
+        moduleCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Form Validation
+        contactForm.addEventListener('submit', (e) => {e})
